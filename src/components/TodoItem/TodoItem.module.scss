@@ -1,0 +1,22 @@
+.row {
+  display: flex;
+  justify-content: space-between;
+  border: 1px solid blue;
+  cursor: pointer;
+  :hover {
+    opacity: 0.7;
+  }
+}
+
+.nameTodo {
+  display: flex;
+  gap: 10px;
+}
+
+.done {
+  text-decoration: line-through;
+}
+
+.inProgress {
+  font-weight: bold;
+}
