@@ -3,7 +3,7 @@ import { create } from 'zustand'
 export const useTodos = create((set) => ({
   todos: [],
   fetchTodos: async () => {
-      const todos = await fetch("http://localhost:3003/todos")
+      const todos = await fetch(`${process.env.REACT_APP_BASEURL}/todos`)
           .then((res) => res.json())
           .catch(error => console.error(error));
 
@@ -16,7 +16,7 @@ export const useTodos = create((set) => ({
           headers: {'Content-Type': 'application/json'},
           body: JSON.stringify(todo)
       };
-      fetch(`http://localhost:3003/todos/${todo.id}`, options)
+      fetch(`${process.env.REACT_APP_BASEURL}/todos/${todo.id}`, options)
       .then(response => response.json())
       .catch(error => console.error(error));
 
@@ -30,7 +30,7 @@ export const useTodos = create((set) => ({
   },
 
   deleteTodo: (todo) => {
-      fetch(`http://localhost:3003/todos/${todo.id}`, { method: 'DELETE' })
+      fetch(`${process.env.REACT_APP_BASEURL}/todos/${todo.id}`, { method: 'DELETE' })
       .then(response => response.json())
       .catch(error => console.error(error));
 
@@ -43,7 +43,7 @@ export const useTodos = create((set) => ({
           headers: {'Content-Type': 'application/json'},
           body: JSON.stringify(todo)
       };
-      fetch(`http://localhost:3003/todos/`, options)
+      fetch(`${process.env.REACT_APP_BASEURL}/todos/`, options)
           .then(response => response.json())
           .catch(error => console.error(error));
 
